@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="distributionType" value="WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="23" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Simple Chat Bot with Java/task" />
+            <option value="$PROJECT_DIR$/Simple Chat Bot with Java/task/build/classes/java" />
+            <option value="$PROJECT_DIR$/Simple Chat Bot with Java/task/build/generated/sources/annotationProcessor/java" />
+            <option value="$PROJECT_DIR$/Simple Chat Bot with Java/task/build/generated/sources/headers/java" />
+            <option value="$PROJECT_DIR$/Simple Chat Bot with Java/task/build/reports/tests" />
+            <option value="$PROJECT_DIR$/Simple Chat Bot with Java/task/build/test-results" />
+            <option value="$PROJECT_DIR$/Simple Chat Bot with Java/task/build/tmp" />
+            <option value="$PROJECT_DIR$/Topics/Break and continue. Branching/Break and continue. Branching" />
+            <option value="$PROJECT_DIR$/Topics/Break and continue. Branching/Bus tour" />
+            <option value="$PROJECT_DIR$/Topics/Break and continue. Branching/Printing even numbers with a skip condition" />
+            <option value="$PROJECT_DIR$/Topics/Break and continue. Branching/Squaring up to the next perfect number" />
+            <option value="$PROJECT_DIR$/Topics/Comments/Comments" />
+            <option value="$PROJECT_DIR$/Topics/Comments/Hello, Java platform" />
+            <option value="$PROJECT_DIR$/Topics/Comments/Incorrect comments" />
+            <option value="$PROJECT_DIR$/Topics/Comments/Javadoc comment" />
+            <option value="$PROJECT_DIR$/Topics/Comments/Printing only the longest line" />
+            <option value="$PROJECT_DIR$/Topics/Comments/The countdown" />
+            <option value="$PROJECT_DIR$/Topics/Comments/Three numbers" />
+            <option value="$PROJECT_DIR$/Topics/Comments/Uncomment a line" />
+            <option value="$PROJECT_DIR$/Topics/For loop/Arithmetic average" />
+            <option value="$PROJECT_DIR$/Topics/For loop/For loop" />
+            <option value="$PROJECT_DIR$/Topics/For loop/Grades" />
+            <option value="$PROJECT_DIR$/Topics/For loop/Numbers divisible by six" />
+            <option value="$PROJECT_DIR$/Topics/For loop/The ancient mystery of factorials" />
+            <option value="$PROJECT_DIR$/Topics/For loop/The sum of integers from a to b" />
+            <option value="$PROJECT_DIR$/Topics/Multiple conditions  switch (1)/Day of the week from an integer" />
+            <option value="$PROJECT_DIR$/Topics/Multiple conditions  switch (1)/Floor-space of the room" />
+            <option value="$PROJECT_DIR$/Topics/Multiple conditions  switch (1)/Multiple conditions  switch" />
+            <option value="$PROJECT_DIR$/Topics/Multiple conditions  switch (1)/Shape" />
+            <option value="$PROJECT_DIR$/Topics/Multiple conditions  switch (2)/Day of the week from an integer" />
+            <option value="$PROJECT_DIR$/Topics/Multiple conditions  switch (2)/Floor-space of the room" />
+            <option value="$PROJECT_DIR$/Topics/Multiple conditions  switch (2)/Harry Potter" />
+            <option value="$PROJECT_DIR$/Topics/Multiple conditions  switch (2)/Multiple conditions  switch" />
+            <option value="$PROJECT_DIR$/Topics/Multiple conditions  switch (2)/Shape" />
+            <option value="$PROJECT_DIR$/Topics/Naming variables/Naming variables" />
+            <option value="$PROJECT_DIR$/Topics/Naming variables/Roadrunner's digital dashboard dilemma" />
+            <option value="$PROJECT_DIR$/Topics/Primitive and reference types/Creating a primitive" />
+            <option value="$PROJECT_DIR$/Topics/Primitive and reference types/Creating a reference type" />
+            <option value="$PROJECT_DIR$/Topics/Primitive and reference types/Primitive and reference types" />
+            <option value="$PROJECT_DIR$/Topics/String/Check burgs" />
+            <option value="$PROJECT_DIR$/Topics/String/Comparing strings ignoring whitespaces" />
+            <option value="$PROJECT_DIR$/Topics/String/Extracting a substring" />
+            <option value="$PROJECT_DIR$/Topics/String/String" />
+            <option value="$PROJECT_DIR$/Topics/Switch expression/Days of the week" />
+            <option value="$PROJECT_DIR$/Topics/Switch expression/Meteorological seasons" />
+            <option value="$PROJECT_DIR$/Topics/Switch expression/Months of the year" />
+            <option value="$PROJECT_DIR$/Topics/Switch expression/Switch expression" />
+            <option value="$PROJECT_DIR$/Topics/Switch pattern matching/Positive Or Negative" />
+            <option value="$PROJECT_DIR$/Topics/Switch pattern matching/Switch pattern matching" />
+            <option value="$PROJECT_DIR$/Topics/Switch pattern matching/Switching across Enums" />
+            <option value="$PROJECT_DIR$/Topics/Types and variables/Assignments" />
+            <option value="$PROJECT_DIR$/Topics/Types and variables/Invalid declaration of variables" />
+            <option value="$PROJECT_DIR$/Topics/Types and variables/Types and variables" />
+            <option value="$PROJECT_DIR$/Topics/While and do-while loops/Celsius Chase  Climbing to a Fiery Halt" />
+            <option value="$PROJECT_DIR$/Topics/While and do-while loops/The length of the sequence" />
+            <option value="$PROJECT_DIR$/Topics/While and do-while loops/The sequence" />
+            <option value="$PROJECT_DIR$/Topics/While and do-while loops/While and do-while loops" />
+            <option value="$PROJECT_DIR$/util" />
+          </set>
+        </option>
+        <option name="resolveExternalAnnotations" value="true" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

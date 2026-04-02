@@ -1,0 +1,10 @@
+type: theory
+custom_name: "Multiple conditions: switch"
+files:
+  - name: src/Task.java
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/3504#comment
+status: Solved
+record: -1
+post_submission_on_open: true

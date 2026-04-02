@@ -1,0 +1,170 @@
+<div class="step-text">
+<p>Since Java 21, several features regarding <code class="language-java">switch</code> functionality are available. Pattern matching expands our capabilities when working with <code class="language-java">switch</code>. In this topic, we will explore this enhancement and practice to help you master it.</p> <h5 id="pattern-matching-semantics">Pattern matching semantics</h5><p>The <a class="theory-lookup not-relevant" href="/learn/step/18883" rel="noopener noreferrer nofollow" target="_blank" title="In Java, pattern matching is the process of checking if a given string adheres to a specified pattern, known as a regular expression. | Regular expressions are powerful tools for processing strings, as they allow you to define common patterns using regular and special characters. The `matches()` method in Java takes a regular expression pattern as an argument and checks whether the string matches this pattern. It's important to note that `matches()` returns only when the whole string matches the regular expression pattern, not just a substring. This behavior differentiates Java from many other programming languages.">pattern matching</a> implementation for <code class="language-java">switch</code> builds on the <code class="language-java">instanceof</code> operator enhancements. It enables us to perform runtime type checking and execute required operations, such as printing a message. Let's examine the code written using <code class="language-java">if</code> blocks. Then, we'll rewrite the same code using the new <code class="language-java">switch</code> feature.</p><pre><code class="language-java">public class SwitchPatternMatchingDemo {
+    public static void main(String[] args) {
+        Object obj = "Java";
+        ifTypeCheckingDemo(obj); // String: Java
+    }
+
+    static void ifTypeCheckingDemo(Object o) {
+        if (o instanceof Integer i) {
+            System.out.printf("int: %d", i);
+        } else if (o instanceof Double d) {
+            System.out.printf("double: %f", d);
+        } else if (o instanceof String s) {
+            System.out.printf("String: %s", s);
+        } else {
+            System.out.printf("No Match!");
+        }
+    }
+}</code></pre><p>In this example, we pass a variable to the <code class="language-java">ifTypeCheckingDemo(Object o)</code> method, which checks if it matches any of the three types and prints a corresponding message. In our case, the message is <code class="language-java">String: Java</code>. Now, let's look at the same code written using <code class="language-java">switch</code> pattern matching:</p><pre><code class="language-java">public class SwitchPatternMatchingDemo {
+    public static void main(String[] args) {
+        Object obj = "Java";
+        switchTypeCheckingDemo(obj); // String: Java
+    }
+
+    static void switchTypeCheckingDemo(Object o) {
+        switch (o) {
+            case Integer i -&gt; System.out.printf("int: %d", i);
+            case Double d  -&gt; System.out.printf("double: %f", d);
+            case String s  -&gt; System.out.printf("String: %s", s);
+            default        -&gt; System.out.println("No Match!");
+        }
+    }
+}</code></pre><p>This code is much more concise and readable, making it a compelling reason to use this feature.</p> <h5 id="selector-expression-type-checking-enhancement">Selector expression type checking enhancement</h5><p>The example in the previous section uses basic Java types. However, what if we need to perform type checking with a non-basic type? Before this update, <code class="language-java">switch</code> only supported primitive types and their wrapper classes, as well as <code class="language-java">String</code> and <code class="language-java">Enum</code>. This enhancement now allows us to use any type for pattern matching.</p><pre><code class="language-java">public class SwitchPatternMatchingDemo {
+    public static void main(String[] args) {
+        Object obj = new Person("James Gosling");
+        switchTypeCheckingDemo(obj); // Person: Person{name=James Gosling}
+    }
+
+    static void switchTypeCheckingDemo(Object o) {
+        switch (o) {
+            case Integer i -&gt; System.out.printf("int: %d", i);
+            case Person p  -&gt; System.out.printf("Person: %s", p.toString());
+            case String s  -&gt; System.out.printf("String: %s", s);
+            default        -&gt; System.out.println("No Match!");
+        }
+    }
+}
+
+class Person {
+    private String name;
+
+    // getter and setter
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name=" + name +
+                '}';
+    }
+}</code></pre><p>This application will compile and print <code class="language-java">Person: Person{name=James Gosling}</code>, which wasn't possible before the update.</p> <h5 id="pattern-matching-via-logical-operators">Pattern matching via logical operators</h5><p>Pattern matching for <code class="language-java">switch</code>, like in the case of the <code class="language-java">instanceof</code> operator, isn't limited to single type checking. You can also use the <code class="language-java">&amp;&amp;</code> logical operator and add an extra statement level:</p><pre><code class="language-java">public class SwitchPatternMatchingDemo {
+    public static void main(String[] args) {
+        Object obj = 100.0;
+        switchTypeCheckingDemo(obj); // double: 100,000000, the number is positive
+    }
+
+    static void switchTypeCheckingDemo(Object o) {
+        switch (o) {
+            case Integer i -&gt; {
+                if (i &gt; 0) {
+                    System.out.printf("int: %d, the number is positive", i);
+                }
+            }
+            case Double d &amp;&amp; d &gt; 0 -&gt; System.out.printf("double: %f, the number is positive", d);
+            default                -&gt; System.out.println("No Match!");
+        }
+    }
+}</code></pre><p>The <code class="language-java">switchTypeCheckingDemo(Object o)</code> method contains two case labels. The first one uses a pattern to check the type, with the second statement executing in the <code class="language-java">if</code> block. The second case performs the same function but uses a pattern for the second statement to verify if the variable value is a positive number.</p><div class="alert alert-primary"><p>Note that <code class="language-java">switch</code> pattern matching, like the <code class="language-java">instanceof</code> operator, doesn't support the <code class="language-java">||</code> operator because of its semantics.</p></div> <h5 id="null-operations">Null operations</h5><p>In earlier Java versions, <code class="language-java">switch</code> couldn't process <code class="language-java">null</code> values. The following code will run but throw a <code class="language-java">NullPointerException</code> when the application executes the first line of the <code class="language-java">nullDemo(String s)</code> method.</p><pre><code class="language-java">public class SwitchPatternMatchingDemo {
+    public static void main(String[] args) {
+        String str = null;
+        nullDemo(str);
+    }
+
+    static void nullDemo(String s) {
+        switch (s) {
+            case "Hello" -&gt; System.out.println("null");
+            case "Hi"    -&gt; System.out.println("String");
+            default      -&gt; System.out.println("No Match!");
+        }
+    }
+}</code></pre><p>However, if <code class="language-java">str</code> is not <code class="language-java">null</code> and we add a <code class="language-java">null</code> case, the code won't compile. We will get a compilation error:</p><pre><code class="language-java">public class SwitchPatternMatchingDemo {
+    public static void main(String[] args) {
+        String str = "Hello";
+        nullDemo(str);
+    }
+
+    static void nullDemo(String s) {
+        switch (s) {
+            case null    -&gt; System.out.println("null"); // Compilation error
+            case "Hello" -&gt; System.out.println("Hello");
+            case "Hi"    -&gt; System.out.println("Hi");
+            default      -&gt; System.out.println("No Match!");
+        }
+    }
+}</code></pre><p>The new features help us avoid these limitations. We can now use a <code class="language-java">null</code> case label: the example below will compile successfully. We will only encounter a <code class="language-java">NullPointerException</code> if the selector expression is <code class="language-java">null</code> and we don't include a <code class="language-java">null</code> case.</p><pre><code class="language-java">public class SwitchPatternMatchingDemo {
+    public static void main(String[] args) {
+        String str = null;
+        nullDemo(str); // null case
+    }
+
+    static void nullDemo(String s) {
+        switch (s) {
+            case null    -&gt; System.out.println("null case");
+            case "Hello" -&gt; System.out.println("Hello");
+            case "Hi"    -&gt; System.out.println("Hi");
+            default      -&gt; System.out.println("No Match!");
+        }
+    }
+}</code></pre><p>What will happen when we run this application? The code will compile and print the <code class="language-java">null case</code> message!</p> <h5 id="case-refinement-or-guarded-pattern">Case refinement or Guarded Pattern</h5><p>Java 21 also introduces guarded patterns in switch statements. When you want to match a pattern only if a specific condition is true, you can use the <code class="language-java">when</code> clause. This clause helps you refine a pattern further:</p><pre><code class="language-java">switch (obj) {
+    case String s 
+    when s.length() &gt; 5 -&gt; {
+        System.out.println("Long string: " + s);
+    }
+    case String s -&gt; {
+        System.out.println("Short string: " + s);
+    }
+    default -&gt; {
+        System.out.println("Not a string");
+    }
+}</code></pre><p>If <code class="language-java">obj</code> is a string and its length is greater than 5, the first case will match. If not, it moves to the second case. We call this a guarded pattern because a condition guards the pattern. Guarded patterns allow you to control case conditions more precisely while keeping your code readable.</p> <h5 id="switches-and-enum-constants">Switches and enum constants</h5><p>Pattern matching in switches now handles enums more effectively. Consider a sealed interface that allows an enum and another class:</p><pre><code class="language-java">sealed interface CardClassification permits Suit, Tarot {}
+public enum Suit implements CardClassification { CLUBS, DIAMONDS, HEARTS, SPADES }
+final class Tarot implements CardClassification {}</code></pre><p>You can use enum constants directly as case constants to avoid unnecessary comparisons, which makes your code clearer to read.</p><pre><code class="language-java">static void exhaustiveSwitchWithBetterEnumSupport(CardClassification c) {
+    switch (c) {
+        case Suit.CLUBS -&gt; {
+            System.out.println("It's clubs");
+        }
+        case Suit.DIAMONDS -&gt; {
+            System.out.println("It's diamonds");
+        }
+        case Suit.HEARTS -&gt; {
+            System.out.println("It's hearts");
+        }
+        case Suit.SPADES -&gt; {
+            System.out.println("It's spades");
+        }
+        case Tarot t -&gt; {
+            System.out.println("It's a tarot");
+        }
+    }</code></pre><p>Additionally, you can combine this with pattern matching for more sophisticated logic in enum handling.</p> <h5 id="dominance-of-case-labels">Dominance of case labels</h5><p>To prevent unreachable code and ambiguity, Java enforces dominance rules in switch pattern matching. A more specific pattern can't follow a broader one that would match first.</p><p>For example:</p><pre><code class="language-java">switch (obj) {
+    case CharSequence cs -&gt; System.out.println("A CharSequence");
+    case String s -&gt; System.out.println("A string"); // ERROR: already matched by above
+}</code></pre><p>Because every <code class="language-java">String</code> is a <code class="language-java">CharSequence</code>, the second case will never run. Java will stop you and display an error.</p><p>Instead, you should arrange patterns from more specific to more general:</p><pre><code class="language-java">switch (obj) {
+    case String s -&gt; System.out.println("A string");
+    case CharSequence cs -&gt; System.out.println("A CharSequence");
+}</code></pre> <h5 id="exhaustiveness-and-sealed-classes">Exhaustiveness and Sealed Classes</h5><p>As you know, it's important that a <code class="language-java">switch</code> covers all possible values, which is why we use <code class="language-java">default</code>. Java 21 enhances this checking—also known as exhaustiveness checking—particularly when using sealed classes. The compiler now makes sure all possible subtypes are handled, making the code safer and more predictable.</p><pre><code class="language-java">sealed interface Shape permits Circle, Rectangle {}
+
+final class Circle implements Shape {}
+final class Rectangle implements Shape {}
+
+static void describe(Shape shape) {
+    switch (shape) {
+        case Circle c    -&gt; System.out.println("It's a circle");
+        case Rectangle r -&gt; System.out.println("It's a rectangle");
+        // No default needed; all subtypes are covered
+    }
+}</code></pre><p>In this example, you don't need to implement a default case because all subtypes are covered. However, if someone adds a new subtype in the future, Java will require you to update this switch.</p> <h5 id="conclusion">Conclusion</h5><p>In this topic, we explored an important update to the <code class="language-java">switch</code> feature: pattern matching. This language feature will help you write more concise and expressive code.</p>
+</div>
