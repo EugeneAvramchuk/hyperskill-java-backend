@@ -11,8 +11,6 @@ public class Main {
         // Use the Scanner's nextInt method to read the next integer
         int height = scanner.nextInt();
 
-        System.out.printf("Hello, my name is %s and I am %d cm tall.", name, height);
-
-        scanner.close(); // TODO: Print the given statement replacing the placeholders with given inputs using formatted string.
+        // TODO: Print the given statement replacing the placeholders with given inputs using formatted string.
     }
 }

@@ -5,10 +5,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
 
-        int remainder = input % 2;
-        System.out.println(remainder);// The first operation goes here
-        int triple = remainder * 3;
-        System.out.println(triple);// The second operation goes here
+        // The first operation goes here
+        // The second operation goes here
 
         scanner.close();
     }

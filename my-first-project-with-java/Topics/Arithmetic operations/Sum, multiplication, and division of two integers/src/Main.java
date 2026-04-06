@@ -11,10 +11,6 @@ public class Main {
         // Read the second integer
         int num2 = scan.nextInt();
 
-        System.out.println(num1 + num2);
-        System.out.println(num1 * num2);
-        System.out.println(num1 / num2);
-
-        scan.close();// TODO: Perform addition, multiplication, and division operations
+        // TODO: Perform addition, multiplication, and division operations
     }
 }

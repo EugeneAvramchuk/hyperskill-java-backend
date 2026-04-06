@@ -4,8 +4,7 @@ files:
     visible: true
     learner_created: false
   - name: test/Tests.java
-    visible: true
     learner_created: false
 feedback_link: https://hyperskill.org/projects/113/stages/615/implement#comment
-status: Failed
+status: Unchecked
 record: -1

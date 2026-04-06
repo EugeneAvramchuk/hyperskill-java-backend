@@ -6,9 +6,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int minutes = scanner.nextInt();
 
-        int resultHours = minutes / 60;
-        int resultMinutes = minutes % 60;
-        System.out.println(resultHours + " hours and " + resultMinutes + " minutes");// Your code comes here!
+        // Your code comes here!
 
         scanner.close();
     }
