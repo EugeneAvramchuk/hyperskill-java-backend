@@ -2,7 +2,7 @@ package machine.coffee;
 
 import machine.CoffeeMachine;
 
-public class Espresso extends Coffee {
+public final class Espresso extends Coffee {
 
     @Override
     public void makeCoffee(CoffeeMachine coffeeMachine) {
