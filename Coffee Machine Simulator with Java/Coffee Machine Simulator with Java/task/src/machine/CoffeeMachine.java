@@ -1,71 +1,77 @@
 package machine;
 
 import java.util.Scanner;
+import machine.coffee.Cappuccino;
+import machine.coffee.Espresso;
+import machine.coffee.Latte;
 
 public class CoffeeMachine {
 
-    int moneyDollars = 550;
-    int waterMl = 400;
-    int milkMl = 540;
-    int coffeeG = 120;
-    int cupsDisp = 9;
-    int counterOfTenCoffee = 0;
+    private int moneyDollars = 550;
+    private int waterMl = 400;
+    private int milkMl = 540;
+    private int coffeeG = 120;
+    private int cupsDisp = 9;
+    private int counterOfTenCoffee = 0;
+    private Cappuccino cappuccino = new Cappuccino();
+    private Espresso espresso = new Espresso();
+    private Latte latte = new Latte();
+
+    public int getMoneyDollars() {
+        return moneyDollars;
+    }
+
+    public void setMoneyDollars(int moneyDollars) {
+        this.moneyDollars = moneyDollars;
+    }
+
+    public int getWaterMl() {
+        return waterMl;
+    }
+
+    public void setWaterMl(int waterMl) {
+        this.waterMl = waterMl;
+    }
+
+    public int getMilkMl() {
+        return milkMl;
+    }
+
+    public void setMilkMl(int milkMl) {
+        this.milkMl = milkMl;
+    }
+
+    public int getCoffeeG() {
+        return coffeeG;
+    }
+
+    public void setCoffeeG(int coffeeG) {
+        this.coffeeG = coffeeG;
+    }
+
+    public int getCupsDisp() {
+        return cupsDisp;
+    }
+
+    public void setCupsDisp(int cupsDisp) {
+        this.cupsDisp = cupsDisp;
+    }
+
+    public int getCounterOfTenCoffee() {
+        return counterOfTenCoffee;
+    }
+
+    public void setCounterOfTenCoffee(int counterOfTenCoffee) {
+        this.counterOfTenCoffee = counterOfTenCoffee;
+    }
+
     Scanner scanner = new Scanner(System.in);
 
     public void buy(String coffeeType) {
-        if (coffeeType.equals("1")) {
-            if (waterMl < 250) {
-                System.out.println("Sorry, not enough water!");
-            } else if (coffeeG < 16) {
-                System.out.println("Sorry, not enough coffee beans!");
-            } else if (cupsDisp < 1) {
-                System.out.println("Sorry, not enough disposable cups!");
-                ;
-            } else {
-                waterMl -= 250;
-                coffeeG -= 16;
-                moneyDollars += 4;
-                cupsDisp -= 1;
-                counterOfTenCoffee++;
-                System.out.println("I have enough resources, making you a coffee!");
-            }
-        } else if (coffeeType.equals("2")) {
-            if (waterMl < 350) {
-                System.out.println("Sorry, not enough water!");
-            } else if (milkMl < 75) {
-                System.out.println("Sorry, not enough milk!");
-                ;
-            } else if (coffeeG < 20) {
-                System.out.println("Sorry, not enough coffee beans!");
-            } else if (cupsDisp < 1) {
-                System.out.println("Sorry, not enough disposable cups!");
-            } else {
-                waterMl -= 350;
-                milkMl -= 75;
-                coffeeG -= 20;
-                moneyDollars += 7;
-                cupsDisp -= 1;
-                counterOfTenCoffee++;
-                System.out.println("I have enough resources, making you a coffee!");
-            }
-        } else if (coffeeType.equals("3")) {
-            if (waterMl < 200) {
-                System.out.println("Sorry, not enough water!");
-            } else if (milkMl < 100) {
-                System.out.println("Sorry, not enough milk!");
-            } else if (coffeeG < 12) {
-                System.out.println("Sorry, not enough coffee beans!");
-            } else if (cupsDisp < 1) {
-                System.out.println("Sorry, not enough disposable cups!");
-            } else {
-                waterMl -= 200;
-                milkMl -= 100;
-                coffeeG -= 12;
-                moneyDollars += 6;
-                cupsDisp -= 1;
-                counterOfTenCoffee++;
-                System.out.println("I have enough resources, making you a coffee!");
-            }
+        switch (coffeeType) {
+            case "1" -> espresso.makeCoffee(this);
+            case "2" -> latte.makeCoffee(this);
+            case "3" -> cappuccino.makeCoffee(this);
         }
     }
 
