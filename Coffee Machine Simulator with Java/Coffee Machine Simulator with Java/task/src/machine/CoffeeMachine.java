@@ -109,9 +109,7 @@ public class CoffeeMachine {
                 break;
             }
             switch (action) {
-                case "remaining" -> {
-                    displayState();
-                }
+                case "remaining" -> displayState();
                 case "buy" -> {
                     if (counterOfTenCoffee == 10) {
                         System.out.println("I need cleaning!");
@@ -133,9 +131,7 @@ public class CoffeeMachine {
                     scanner.nextLine();
                     fill(addWater, addMilk, addCoffee, addCups);
                 }
-                case "take" -> {
-                    take();
-                }
+                case "take" -> take();
                 case "clean" -> {
                     counterOfTenCoffee = 0;
                     System.out.println("I have been cleaned!");
