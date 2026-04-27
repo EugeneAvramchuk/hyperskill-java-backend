@@ -66,7 +66,7 @@ public class CoffeeMachine {
         this.counterOfTenCoffee = counterOfTenCoffee;
     }
 
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public void buy(String coffeeType) {
         switch (coffeeType) {
