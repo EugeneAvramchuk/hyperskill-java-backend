@@ -9,3 +9,5 @@ course-remote-info.yaml
 *.iml
 .idea/
 .gradle/
+build/
+out/
