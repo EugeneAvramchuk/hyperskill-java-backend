@@ -1,7 +1,10 @@
-import org.hyperskill.hstest.dynamic.DynamicTest;
+import org.hyperskill.hstest.exception.outcomes.TestPassed;
+import org.hyperskill.hstest.exception.outcomes.WrongAnswer;
 import org.hyperskill.hstest.stage.StageTest;
 import org.hyperskill.hstest.testcase.CheckResult;
 import org.hyperskill.hstest.testcase.TestCase;
+import org.hyperskill.hstest.dynamic.DynamicTest;
+import org.hyperskill.hstest.dynamic.input.DynamicTesting;
 import org.hyperskill.hstest.testing.TestedProgram;
 
 import java.util.ArrayList;
@@ -294,10 +297,10 @@ public class CoffeeMachineTest extends StageTest<TestClue> {
         // Coffee Machine actions check
         String actualActionsPrompt = main.start();
         String actualActionsPromptLowerCase = actualActionsPrompt.trim().toLowerCase();
-        String expectedActionsPrompt = "Write action (buy, fill, take, clean, remaining, exit):";
+        String expectedActionsPrompt = "Write action (buy, fill, take, remaining, exit):";
 
-        if (!actualActionsPromptLowerCase.contains("buy") || !actualActionsPromptLowerCase.contains("fill") || !actualActionsPromptLowerCase.contains("take") || !actualActionsPromptLowerCase.contains("clean") || !actualActionsPromptLowerCase.contains("remaining") || !actualActionsPromptLowerCase.contains("exit")) {
-            return CheckResult.wrong("Coffee Machine should support six actions: \"buy\", \"fill\", \"take\", \"clean\", \"remaining\", and \"exit\"\n\n"
+        if (!actualActionsPromptLowerCase.contains("buy") || !actualActionsPromptLowerCase.contains("fill") || !actualActionsPromptLowerCase.contains("take") || !actualActionsPromptLowerCase.contains("remaining") || !actualActionsPromptLowerCase.contains("exit")) {
+            return CheckResult.wrong("Coffee Machine should support six actions: \"buy\", \"fill\", \"take\", \"remaining\", and \"exit\"\n\n"
                     + "Expected actions prompt:\n" + expectedActionsPrompt + "\n\n"
                     + "Actual actions prompt:\n" + actualActionsPrompt + "\n");
         }
@@ -366,74 +369,6 @@ public class CoffeeMachineTest extends StageTest<TestClue> {
     }
 
     @DynamicTest(order = 103)
-    CheckResult checkCoffeeMachineCleaningAction() {
-        TestedProgram main = new TestedProgram();
-
-        main.start();
-
-        main.execute("fill\n2750\n260\n68\n3");
-
-        main.execute("buy\n1");
-        main.execute("buy\n1");
-        main.execute("buy\n1");
-        main.execute("buy\n2");
-        main.execute("buy\n2");
-        main.execute("buy\n2");
-        main.execute("buy\n2");
-        main.execute("buy\n3");
-        main.execute("buy\n3");
-        main.execute("buy\n3");
-
-        // "buy" check, after before "clean"
-        String actualBuyOutputBeforeCleaning = main.execute("buy");
-        String actualBuyOutputBeforeCleaningLowerCase = actualBuyOutputBeforeCleaning.trim().toLowerCase();
-        String expectedBuyOutputBeforeCleaning = "I need cleaning!";
-
-        if (!actualBuyOutputBeforeCleaningLowerCase.contains(expectedBuyOutputBeforeCleaning.toLowerCase())) {
-            return CheckResult.wrong("Coffee Machine requires cleaning after producing 10 cups of coffee\n\n"
-                    + "Expected output:\n" + expectedBuyOutputBeforeCleaning + "\n\n"
-                    + "Actual buy output:\n" + actualBuyOutputBeforeCleaning + "\n");
-        }
-
-        String actualBuyOutputAfterCleaning = main.execute("clean");
-        String actualBuyOutputAfterCleaningLowerCase = actualBuyOutputAfterCleaning.trim().toLowerCase();
-        String expectedBuyOutputAfterCleaning = "I have been cleaned!";
-
-        if (!actualBuyOutputAfterCleaningLowerCase.contains(expectedBuyOutputAfterCleaning.toLowerCase())) {
-            return CheckResult.wrong("After cleaning, the Coffee Machine should output that it has been cleaned. \n\n"
-                    + "Expected output:\n" + expectedBuyOutputAfterCleaning + "\n\n"
-                    + "Actual output:\n" + actualBuyOutputAfterCleaning + "\n");
-        }
-
-
-        main.execute("buy");
-        String actualBuyOutput1 = main.execute("3");
-        String actualBuyOutput1LowerCase = actualBuyOutput1.trim().toLowerCase();
-        String expectedBuyOutput1 = "I have enough resources, making you a coffee!";
-
-        if (!actualBuyOutput1LowerCase.contains(expectedBuyOutput1.toLowerCase())) {
-            return CheckResult.wrong("Coffee Machine should make us coffee, since it has sufficient ingredients (and doesn't required cleaning yet).\n\n"
-                    + "Expected buy output:\n" + expectedBuyOutput1 + "\n\n"
-                    + "Actual buy output:\n" + actualBuyOutput1 + "\n");
-        }
-
-        main.execute("buy\n3");
-
-        main.execute("fill\n1234\n522\n89\n7");
-
-        String actualRemainingOutputAfterFilling = main.execute("remaining").trim();
-        String expectedRemainingOutputAfterFilling = "The coffee machine has:\n" + "1234 ml of water\n" + "522 ml of milk\n" + "89 g of coffee beans\n" + "7 disposable cups\n" + "$620 of money";
-
-        if (!actualRemainingOutputAfterFilling.contains(Integer.toString(1234)) || !actualRemainingOutputAfterFilling.contains(Integer.toString(522)) || !actualRemainingOutputAfterFilling.contains(Integer.toString(89)) || !actualRemainingOutputAfterFilling.contains(Integer.toString(7)) || !actualRemainingOutputAfterFilling.contains(Integer.toString(620))) {
-            return CheckResult.wrong("Incorrect Coffee Machine state after filling\n\n"
-                    + "Expected state:\n" + expectedRemainingOutputAfterFilling + "\n\n"
-                    + "Actual state:\n" + actualRemainingOutputAfterFilling + "\n");
-        }
-
-        return CheckResult.correct();
-    }
-
-    @DynamicTest(order = 104)
     CheckResult checkCoffeeMachineExitAction() {
         TestedProgram main = new TestedProgram();
 
