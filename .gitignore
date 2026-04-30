@@ -1,9 +1,4 @@
 Topics/
-gradle/
-gradlew
-gradlew.bat
-build.gradle
-settings.gradle
 course-info.yaml
 course-remote-info.yaml
 *.iml
